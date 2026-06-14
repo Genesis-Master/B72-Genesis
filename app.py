@@ -1,13 +1,4 @@
 # @title GENESIS (RUTH) | Y10 MASTERS (B72 - FOUNDER RESTORED) { display-mode: "form" }
-import IPython
-from google.colab import files
-import base64
-import json
-import ipywidgets as widgets
-from IPython.display import display
-
-from google.colab import output
-import time
 
 # Launch the secure verification pin modal
 entered_pin = output.eval_js('prompt("ENTER SECURITY VERIFICATION PIN:")')
