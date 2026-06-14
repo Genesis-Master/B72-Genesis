@@ -12,15 +12,16 @@ img_data_main = ""
 
 uploaded = st.file_uploader("Upload images", accept_multiple_files=True) 
 for file in uploaded:
-   file_bytes_data = file.read()
-    File "/mount/src/b72-genesis/app.py", line 16
-          byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file_name[:3].upper()}"
+    file_bytes_data = file.read()
+    file "/mount/src/b72-genesis/app.py", line 16
+      
+    byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file_name[:3].upper()}"
  
-         encoded = base64.b64encode(file_bytes_data).decode('utf-8')
+    encoded = base64.b64encode(file_bytes_data).decode('utf-8')
 if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
-        image_gallery[file_name] = encoded
+image_gallery[file_name] = encoded
 if not img_data_main:
-            img_data_main = encoded
+img_data_main = encoded
 
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
