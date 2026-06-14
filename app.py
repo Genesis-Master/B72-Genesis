@@ -12,10 +12,10 @@ img_data_main = ""
 
 uploaded = st.file_uploader("Upload images", accept_multiple_files=True) 
 for file in uploaded:
-    file_bytes = len(uploaded[file_name])
-    byte_signatures[file_name] = f"SIG-{file_bytes}-{file_name[:3].upper()}"
-
-    encoded = base64.b64encode(uploaded[file_name]).decode('utf-8')
+   file_bytes_data = file.read()
+        byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file_name[:3].upper()}"
+       
+        encoded = base64.b64encode(file_bytes_data).decode('utf-8')
     if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
         image_gallery[file_name] = encoded
         if not img_data_main:
