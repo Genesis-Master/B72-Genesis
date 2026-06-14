@@ -14,11 +14,11 @@ uploaded=st.file_uploader("Choose image...",accept_multiple_files=True)
 file_bytes=len(uploaded[file_name])
 byte_signatures[file_name] = f"SIG-{file_bytes}-{file_name[:3].upper()}"
 
-    encoded = base64.b64encode(uploaded[file_name]).decode('utf-8')
-    if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
-        image_gallery[file_name] = encoded
-        if not img_data_main:
-            img_data_main = encoded
+encoded = base64.b64encode(uploaded[file_name]).decode('utf-8')
+if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
+image_gallery[file_name] = encoded
+if not img_data_main:
+img_data_main = encoded
 
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
