@@ -3,11 +3,6 @@ import streamlit as st
 import base64
 import json
     
-
-
-else:
-    print("Invalid Pin Entered. Access Restricted.")
-
 # DUAL UPLOAD: Select your Nadir (Overhead) and all Side Elevation shots
 
 # Process all uploaded images for the gallery and capture BYTE SIZE signatures
