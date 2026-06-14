@@ -1,7 +1,7 @@
 # @title GENESIS (RUTH) | Y10 MASTERS (B72 - FOUNDER RESTORED) { display-mode: "form" }
 
 # Launch the secure verification pin modal
-entered_pin = output.eval_js('prompt("ENTER SECURITY VERIFICATION PIN:")')
+⁠entered_pin = st.text_input("ENTER SECURITY VERIFICATION PIN:", type="password")⁠
 
 # Define your authorized pins (Admin/Civilian) - adjust as needed
 authorized_pins = ["12345", "67890"]
