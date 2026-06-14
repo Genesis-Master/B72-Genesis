@@ -1,12 +1,7 @@
 # @title GENESIS (RUTH) | Y10 MASTERS (B72 - FOUNDER RESTORED) { display-mode: "form" }
 import streamlit as st
 
-    # Add a brief pause for UI rendering
-    time.sleep(0.5)
-    uploaded = files.upload()
-    # The dashboard/upload sequence will render here next
-else:
-    print("Invalid Pin Entered. Access Restricted.")
+   
 
 # DUAL UPLOAD: Select your Nadir (Overhead) and all Side Elevation shots
 
