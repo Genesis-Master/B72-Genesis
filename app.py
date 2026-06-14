@@ -4,7 +4,6 @@ import base64
 import json
 import ipywidgets as widgets
 from IPython.display import display
-
 from google.colab import output
 import time
 
