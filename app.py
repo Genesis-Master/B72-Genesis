@@ -1,5 +1,5 @@
 # @title GENESIS (RUTH) | Y10 MASTERS (B72 - FOUNDER RESTORED) { display-mode: "form" }
-
+import streamlit as st
 # Launch the secure verification pin modal
 ⁠entered_pin = st.text_input("ENTER SECURITY VERIFICATION PIN:", type="password")⁠
 
