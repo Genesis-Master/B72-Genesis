@@ -1058,4 +1058,4 @@ window.ruthSuggest = function(code) {{
 }};
 </script>
 '''
-display(IPython.display.HTML(html_code))
+
