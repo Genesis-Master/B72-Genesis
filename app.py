@@ -4,18 +4,7 @@ import base64
 import json
     
 
-# Launch the secure verification pin modal
-entered_pin = output.eval_js('prompt("ENTER SECURITY VERIFICATION PIN:")')
 
-# Define your authorized pins (Admin/Civilian) - adjust as needed
-authorized_pins = ["12345", "67890"]
-
-if entered_pin in authorized_pins:
-    print("Verification Successful. Preparing canvas...")
-    # Add a brief pause for UI rendering
-    time.sleep(0.5)
-    uploaded = files.upload()
-    # The dashboard/upload sequence will render here next
 else:
     print("Invalid Pin Entered. Access Restricted.")
 
