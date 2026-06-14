@@ -1,13 +1,6 @@
 # @title GENESIS (RUTH) | Y10 MASTERS (B72 - FOUNDER RESTORED) { display-mode: "form" }
 import streamlit as st
-# Launch the secure verification pin modal
-⁠entered_pin = st.text_input("ENTER SECURITY VERIFICATION PIN:", type="password")⁠
 
-# Define your authorized pins (Admin/Civilian) - adjust as needed
-authorized_pins = ["12345", "67890"]
-
-if entered_pin in authorized_pins:
-    print("Verification Successful. Preparing canvas...")
     # Add a brief pause for UI rendering
     time.sleep(0.5)
     uploaded = files.upload()
