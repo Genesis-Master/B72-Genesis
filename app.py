@@ -10,7 +10,7 @@ image_gallery = {}
 byte_signatures = {}
 img_data_main = ""
 
-for file_name in uploaded.keys():
+for file in uploaded:
     file_bytes = len(uploaded[file_name])
     byte_signatures[file_name] = f"SIG-{file_bytes}-{file_name[:3].upper()}"
 
