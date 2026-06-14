@@ -2,7 +2,7 @@
 import streamlit as st
 import base64
 import json
-
+    
 
 # Launch the secure verification pin modal
 entered_pin = output.eval_js('prompt("ENTER SECURITY VERIFICATION PIN:")')
