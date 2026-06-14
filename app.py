@@ -10,15 +10,19 @@ image_gallery = {}
 byte_signatures = {}
 img_data_main = ""
 
-uploaded=st.file_uploader("Choose image...",accept_multiple_files=True)
-file_bytes=len(uploaded[file_name])
-byte_signatures[file_name] = f"SIG-{file_bytes}-{file_name[:3].upper()}"
+uploaded = st.file_uploader("Choose image...", accept_multiple_files=True)
 
-encoded = base64.b64encode(uploaded[file_name]).decode('utf-8')
-if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
-   image_gallery[file_name] = encoded
-if not img_data_main:
-   img_data_main = encoded
+if uploaded:
+    for file in uploaded:
+        file_name = file.name
+        file_bytes = file.read()
+        byte_signatures[file_name] = f"SIG-{len(file_bytes)}-{file_name[:3].upper()}"
+       
+        encoded = base64.b64encode(file_bytes).decode('utf-8')
+        if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
+            image_gallery[file_name] = encoded
+            if not img_data_main:
+                img_data_main = encoded
 
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
