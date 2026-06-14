@@ -10,7 +10,8 @@ image_gallery = {}
 byte_signatures = {}
 img_data_main = ""
 
-for file in uploaded:
+File "/mount/src/b72-genesis/app.py", line 13, in <module>
+    for file in uploaded:
     file_bytes = len(uploaded[file_name])
     byte_signatures[file_name] = f"SIG-{file_bytes}-{file_name[:3].upper()}"
 
