@@ -30,7 +30,7 @@ if uploaded:
 
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
-if image_gallery: selected_file = st.selectbox("Select Image", list(image_gallery.keys()))
+selected_file = st.selectbox("Select Image", list(image_gallery.keys()))
 st.image(base64.b64decode(image_gallery[selected_file]))
 # Keystone Note: Using double-braces {{ }} to prevent Colab Syntax Warnings on CSS
 html_code = f'''
