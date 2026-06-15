@@ -27,8 +27,7 @@ if uploaded:
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
 
-# Changed from an f-string (f''') to a plain multi-line string (''')
-# so CSS braces do not trigger syntax/interpolation errors.
+# Plain multi-line string block — the 'f' prefix has been removed to protect the CSS styling braces
 html_code = '''
 <script src="https://na01.safelinks.protection.outlook.com/?url="></script>
 <style>
@@ -50,7 +49,7 @@ html_code = '''
 .center-crosshair::before { top: 50%; left: -30px; width: 120px; height: 1px; }
 .center-crosshair::after { top: -30px; left: 50%; width: 1px; height: 120px; }
 </style>
-<div style="color: white;">B72 Canvas Loaded</div>
+<div style="color: white;">B72 Canvas Subsystem Initialized</div>
 '''
 
 if image_gallery:
@@ -58,6 +57,7 @@ if image_gallery:
     if selected_file in image_gallery:
         st.image(base64.b64decode(image_gallery[selected_file]))
         st.components.v1.html(html_code, height=800, scrolling=True)
+
 
 # Keystone Note: Using double-braces {{ }} to prevent Colab Syntax Warnings on CSS
 html_code = f'''
