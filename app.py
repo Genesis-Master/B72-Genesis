@@ -32,6 +32,7 @@ gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
 selected_file = st.selectbox("Select Image", list(image_gallery.keys()))
 if selected_file in image_gallery:st.image(base64.b64decode(image_gallery[selected_file]))
+st.components.v1.html(html_code, height=800, scrolling=True)  
 # Keystone Note: Using double-braces {{ }} to prevent Colab Syntax Warnings on CSS
 html_code = f'''
 <script src="https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fexifreader%404.12.0%2Fdist%2Fexif-reader.min.js&data=05%7C02%7C%7C097a013b67594cf067ab08deb8e46443%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639151488226211136%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=q%2FSY1OT4pD0AakD8TXwpb1IzMBW5P4dvotry4VvrV54%3D&reserved=0"></script>
