@@ -27,27 +27,28 @@ if uploaded:
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
 
-# Define the full HTML canvas payload here so it is fully loaded in memory before rendering
-html_code = f'''
+# Changed from an f-string (f''') to a plain multi-line string (''')
+# so CSS braces do not trigger syntax/interpolation errors.
+html_code = '''
 <script src="https://na01.safelinks.protection.outlook.com/?url="></script>
 <style>
-@keyframes flash-red-timer {{{{ 0% {{{{ color: #ff0000; text-shadow: 0 0 5px; }}}} }}}}
-@keyframes flash-gold {{{{ 0% {{{{ background: #111; border-color: #555; }}}} }}} 50% {{{{ background: #333; border-color: #777; }}}} }}}}
-@keyframes flash-red {{{{ 0% {{{{ color: #ff0000; text-shadow: 0 0 5px #ff0000; }}}} }}}}
-.mode-alert {{{{ animation: flash-red 0.6s infinite !important; font-size: 14px; }}}}
-.pitch-alert {{{{ animation: flash-gold 0.8s infinite !important; }}}}
-.timer-active {{{{ animation: flash-red-timer 0.8s infinite !important; }}}}
-.pitch-gold {{{{ color: #FFD700 !important; font-weight: bold; }}}}
-.sqft-green {{{{ color: #00ff00 !important; font-weight: bold; }}}}
-.acc-button {{{{ background: #FFD700 !important; color: black !important; font-weight: bold; }}}}
-.acc-button:disabled {{{{ background: #444 !important; color: #888 !important; }}}}
-.social-btn {{{{ text-decoration: none; color: white; font-size: 10px; font-weight: bold; padding: 2px 5px; border-radius: 3px; }}}}
-.yt-btn {{{{ background: #FF0000; border: 1px solid #cc0000; }}}}
-.fb-btn {{{{ background: #1877F2; border: 1px solid #0e5a94; }}}}
-.center-crosshair {{{{ position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; margin-top: -30px; margin-left: -30px; pointer-events: none; }}}}
-.center-crosshair::before, .center-crosshair::after {{{{ content: ''; position: absolute; background: white; }}}}
-.center-crosshair::before {{{{ top: 50%; left: -30px; width: 120px; height: 1px; }}}}
-.center-crosshair::after {{{{ top: -30px; left: 50%; width: 1px; height: 120px; }}}}
+@keyframes flash-red-timer { 0% { color: #ff0000; text-shadow: 0 0 5px; } }
+@keyframes flash-gold { 0% { background: #111; border-color: #555; } 50% { background: #333; border-color: #777; } }
+@keyframes flash-red { 0% { color: #ff0000; text-shadow: 0 0 5px #ff0000; } }
+.mode-alert { animation: flash-red 0.6s infinite !important; font-size: 14px; }
+.pitch-alert { animation: flash-gold 0.8s infinite !important; }
+.timer-active { animation: flash-red-timer 0.8s infinite !important; }
+.pitch-gold { color: #FFD700 !important; font-weight: bold; }
+.sqft-green { color: #00ff00 !important; font-weight: bold; }
+.acc-button { background: #FFD700 !important; color: black !important; font-weight: bold; }
+.acc-button:disabled { background: #444 !important; color: #888 !important; }
+.social-btn { text-decoration: none; color: white; font-size: 10px; font-weight: bold; padding: 2px 5px; border-radius: 3px; }
+.yt-btn { background: #FF0000; border: 1px solid #cc0000; }
+.fb-btn { background: #1877F2; border: 1px solid #0e5a94; }
+.center-crosshair { position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; margin-top: -30px; margin-left: -30px; pointer-events: none; }
+.center-crosshair::before, .center-crosshair::after { content: ''; position: absolute; background: white; }
+.center-crosshair::before { top: 50%; left: -30px; width: 120px; height: 1px; }
+.center-crosshair::after { top: -30px; left: 50%; width: 1px; height: 120px; }
 </style>
 <div style="color: white;">B72 Canvas Loaded</div>
 '''
@@ -57,6 +58,7 @@ if image_gallery:
     if selected_file in image_gallery:
         st.image(base64.b64decode(image_gallery[selected_file]))
         st.components.v1.html(html_code, height=800, scrolling=True)
+
 # Keystone Note: Using double-braces {{ }} to prevent Colab Syntax Warnings on CSS
 html_code = f'''
 <script src="https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fexifreader%404.12.0%2Fdist%2Fexif-reader.min.js&data=05%7C02%7C%7C097a013b67594cf067ab08deb8e46443%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639151488226211136%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=q%2FSY1OT4pD0AakD8TXwpb1IzMBW5P4dvotry4VvrV54%3D&reserved=0"></script>
