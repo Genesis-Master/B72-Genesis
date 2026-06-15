@@ -27,7 +27,7 @@ if uploaded:
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
 
-# Plain multi-line string block — the 'f' prefix has been removed to protect the CSS styling braces
+# Plain multi-line string block — the f-string prefix has been removed and the ... placeholder is gone
 html_code = '''
 <script src="https://na01.safelinks.protection.outlook.com/?url="></script>
 <style>
@@ -49,7 +49,7 @@ html_code = '''
 .center-crosshair::before { top: 50%; left: -30px; width: 120px; height: 1px; }
 .center-crosshair::after { top: -30px; left: 50%; width: 1px; height: 120px; }
 </style>
-<div style="color: white;">B72 Canvas Subsystem Initialized</div>
+<div style="color: white;">B72 Canvas Dashboard Active</div>
 '''
 
 if image_gallery:
