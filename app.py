@@ -18,7 +18,7 @@ for file in uploaded:
     byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file.name[:3].upper()}"
  
     encoded = base64.b64encode(file_bytes_data).decode('utf-8')
-if file.name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
+if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
    image_gallery[file_name] = encoded
 if not img_data_main:
    img_data_main = encoded
