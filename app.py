@@ -2,9 +2,6 @@
 import streamlit as st
 import base64
 import json
-
-# Initializing html_code to prevent NameError before it is fully defined later in your script
-html_code = ""
  
 # DUAL UPLOAD: Select your Nadir (Overhead) and all Side Elevation shots
 
@@ -34,11 +31,17 @@ if uploaded:
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
 
+# Define html_code here so it is available for the component render
+html_code = f'''
+<div style="color: white;">Keystone Y10 Setup</div>
+'''
+
 if image_gallery:
     selected_file = st.selectbox("Select Image", list(image_gallery.keys()))
     if selected_file in image_gallery:
         st.image(base64.b64decode(image_gallery[selected_file]))
         st.components.v1.html(html_code, height=800, scrolling=True)
+
 
 # Keystone Note: Using double-braces {{ }} to prevent Colab Syntax Warnings on CSS
 html_code = f'''
