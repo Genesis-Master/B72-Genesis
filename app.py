@@ -2,7 +2,7 @@
 import streamlit as st
 import base64
 import json
-    
+  
 # DUAL UPLOAD: Select your Nadir (Overhead) and all Side Elevation shots
 
 # Process all uploaded images for the gallery and capture BYTE SIZE signatures
@@ -10,18 +10,23 @@ image_gallery = {}
 byte_signatures = {}
 img_data_main = ""
 
-uploaded = st.file_uploader("Upload images", accept_multiple_files=True) 
-for file in uploaded:
-    file_bytes_data = file.read()
+uploaded = st.file_uploader("Upload images", accept_multiple_files=True)
 
-      
-    byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file.name[:3].upper()}"
+if uploaded:
+    for file in uploaded:
+        file_bytes_data = file.read()
+
+        # FIXED: Changed file_name to file.name
+        byte_signatures[file.name] = f"SIG-{len(file_bytes_data)}-{file.name[:3].upper()}"
  
-    encoded = base64.b64encode(file_bytes_data).decode('utf-8')
-if file_name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
-   image_gallery[file_name] = encoded
-if not img_data_main:
-   img_data_main = encoded
+        encoded = base64.b64encode(file_bytes_data).decode('utf-8')
+       
+        # FIXED: Indented these blocks and changed file_name to file.name
+        if file.name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
+            image_gallery[file.name] = encoded
+           
+        if not img_data_main:
+            img_data_main = encoded
 
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
