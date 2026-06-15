@@ -1,44 +1,31 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-# Set up the main page configuration
-st.set_page_config(page_title="B72-Genesis Dashboard", layout="wide")
+# 1. State Initialization
+if 'initialized' not in st.session_state:
+    st.session_state.initialized = True
 
-# This is the master HTML/CSS payload.
-# It is defined as a plain multi-line string (no 'f' prefix)
-# to avoid syntax errors with CSS curly braces.
+st.set_page_config(page_title="B72-Genesis", layout="wide")
+
+# 2. CSS Payload (Stable Baseline)
 html_code = '''
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            background-color: #111;
-            color: white;
-            font-family: sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .dashboard-container {
-            text-align: center;
-            padding: 20px;
-            border: 1px solid #444;
-            border-radius: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="dashboard-container">
-        <h1>B72-Genesis Dashboard Active</h1>
-        <p>System Initialized: Y10 Blueprint Logic</p>
-    </div>
-</body>
-</html>
+<style>
+    body { background-color: #111; color: #00FF00; font-family: monospace; }
+    .data-box { border: 1px solid #00FF00; padding: 20px; }
+</style>
+<div class="data-box">
+    <h1>B72-Genesis Core Operational</h1>
+    <p>Session State: ACTIVE</p>
+</div>
 '''
 
-# Rendering the component
-st.title("B72-Genesis Workspace")
-components.html(html_code, height=650, scrolling=True)
+# 3. Main Logic Execution
+st.title("B72-Genesis Development Workspace")
+components.html(html_code, height=300)
+
+if st.button("Initialize Y10 Protocol"):
+    st.write("Y10 Blueprint Loaded into Buffer.")
+    st.session_state.y10_loaded = True
+
+if st.session_state.get('y10_loaded', False):
+    st.success("Y10 Logic Successfully Bound to Dashboard.")
