@@ -2,7 +2,7 @@
 import streamlit as st
 import base64
 import json
-  
+ 
 # DUAL UPLOAD: Select your Nadir (Overhead) and all Side Elevation shots
 
 # Process all uploaded images for the gallery and capture BYTE SIZE signatures
@@ -20,11 +20,11 @@ if uploaded:
         byte_signatures[file.name] = f"SIG-{len(file_bytes_data)}-{file.name[:3].upper()}"
  
         encoded = base64.b64encode(file_bytes_data).decode('utf-8')
-       
+      
         # FIXED: Indented these blocks and changed file_name to file.name
         if file.name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
             image_gallery[file.name] = encoded
-           
+          
         if not img_data_main:
             img_data_main = encoded
 
@@ -35,9 +35,6 @@ if image_gallery:
     if selected_file in image_gallery:
         st.image(base64.b64decode(image_gallery[selected_file]))
         st.components.v1.html(html_code, height=800, scrolling=True)
-
-         st.image(base64.b64decode(image_gallery[selected_file]))
-         st.components.v1.html(html_code, height=800, scrolling=True) 
 # Keystone Note: Using double-braces {{ }} to prevent Colab Syntax Warnings on CSS
 html_code = f'''
 <script src="https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fnpm%2Fexifreader%404.12.0%2Fdist%2Fexif-reader.min.js&data=05%7C02%7C%7C097a013b67594cf067ab08deb8e46443%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C639151488226211136%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=q%2FSY1OT4pD0AakD8TXwpb1IzMBW5P4dvotry4VvrV54%3D&reserved=0"></script>
