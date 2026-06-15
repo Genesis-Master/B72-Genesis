@@ -30,7 +30,7 @@ if uploaded:
 
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
-f image_gallery: selected_file = st.selectbox("Select Image", list(image_gallery.keys()))
+if image_gallery: selected_file = st.selectbox("Select Image", list(image_gallery.keys()))
         if selected_file and selected_file in image_gallery:
           st.image(base64.b64decode(image_gallery[selected_file]))
           st.components.v1.html(html_code, height=800, scrolling=True) 
