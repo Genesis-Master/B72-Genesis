@@ -15,7 +15,7 @@ for file in uploaded:
     file_bytes_data = file.read()
 
       
-    byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file_name[:3].upper()}"
+    byte_signatures[file_name] = f"SIG-{len(file_bytes_data)}-{file.name[:3].upper()}"
  
     encoded = base64.b64encode(file_bytes_data).decode('utf-8')
 if file.name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
