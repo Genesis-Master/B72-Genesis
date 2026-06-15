@@ -2,8 +2,6 @@
 import streamlit as st
 import base64
 import json
- 
-# DUAL UPLOAD: Select your Nadir (Overhead) and all Side Elevation shots
 
 # Process all uploaded images for the gallery and capture BYTE SIZE signatures
 image_gallery = {}
@@ -16,12 +14,10 @@ if uploaded:
     for file in uploaded:
         file_bytes_data = file.read()
 
-        # FIXED: Changed file_name to file.name
         byte_signatures[file.name] = f"SIG-{len(file_bytes_data)}-{file.name[:3].upper()}"
  
         encoded = base64.b64encode(file_bytes_data).decode('utf-8')
       
-        # FIXED: Indented these blocks and changed file_name to file.name
         if file.name.lower().endswith(('.png', '.jpg', '.jpeg', '.webp')):
             image_gallery[file.name] = encoded
           
@@ -31,9 +27,29 @@ if uploaded:
 gallery_json = json.dumps(image_gallery)
 byte_json = json.dumps(byte_signatures)
 
-# Define html_code here so it is available for the component render
+# Define the full HTML canvas payload here so it is fully loaded in memory before rendering
 html_code = f'''
-<div style="color: white;">Keystone Y10 Setup</div>
+<script src="https://na01.safelinks.protection.outlook.com/?url="></script>
+<style>
+@keyframes flash-red-timer {{{{ 0% {{{{ color: #ff0000; text-shadow: 0 0 5px; }}}} }}}}
+@keyframes flash-gold {{{{ 0% {{{{ background: #111; border-color: #555; }}}} }}} 50% {{{{ background: #333; border-color: #777; }}}} }}}}
+@keyframes flash-red {{{{ 0% {{{{ color: #ff0000; text-shadow: 0 0 5px #ff0000; }}}} }}}}
+.mode-alert {{{{ animation: flash-red 0.6s infinite !important; font-size: 14px; }}}}
+.pitch-alert {{{{ animation: flash-gold 0.8s infinite !important; }}}}
+.timer-active {{{{ animation: flash-red-timer 0.8s infinite !important; }}}}
+.pitch-gold {{{{ color: #FFD700 !important; font-weight: bold; }}}}
+.sqft-green {{{{ color: #00ff00 !important; font-weight: bold; }}}}
+.acc-button {{{{ background: #FFD700 !important; color: black !important; font-weight: bold; }}}}
+.acc-button:disabled {{{{ background: #444 !important; color: #888 !important; }}}}
+.social-btn {{{{ text-decoration: none; color: white; font-size: 10px; font-weight: bold; padding: 2px 5px; border-radius: 3px; }}}}
+.yt-btn {{{{ background: #FF0000; border: 1px solid #cc0000; }}}}
+.fb-btn {{{{ background: #1877F2; border: 1px solid #0e5a94; }}}}
+.center-crosshair {{{{ position: absolute; top: 50%; left: 50%; width: 60px; height: 60px; margin-top: -30px; margin-left: -30px; pointer-events: none; }}}}
+.center-crosshair::before, .center-crosshair::after {{{{ content: ''; position: absolute; background: white; }}}}
+.center-crosshair::before {{{{ top: 50%; left: -30px; width: 120px; height: 1px; }}}}
+.center-crosshair::after {{{{ top: -30px; left: 50%; width: 1px; height: 120px; }}}}
+</style>
+<div style="color: white;">B72 Canvas Loaded</div>
 '''
 
 if image_gallery:
